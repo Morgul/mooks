@@ -4,7 +4,9 @@
 // @module models.js
 //----------------------------------------------------------------------------------------------------------------------
 
-var thinky = require('thinky')({ host:'209.144.228.139', db: 'mooks_and_minions' });
+//var thinky = require('thinky')({ host:'209.144.228.139', db: 'mooks_and_minions' });
+
+var thinky = require('thinky')({ db: 'mooks_and_minions' });
 var r = thinky.r;
 
 //----------------------------------------------------------------------------------------------------------------------
