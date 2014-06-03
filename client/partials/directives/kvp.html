@@ -1,0 +1,24 @@
+<div class="kvp-list row">
+    <label class="col-sm-2 control-label">{{ _name }}</label>
+    <div class="kvp-container col-sm-10">
+        <div class="kvp-item row" ng-repeat="kvp in model track by $index">
+            <div ng-if="!$first" class="kvp-close" ng-click="removeItem($index)"><i class="fa fa-times"></i></div>
+
+            <label for="{{ _key }}" class="col-sm-1 control-label">{{ _key | capitalize }}</label>
+            <div class="col-sm-3" ng-switch="_keyType">
+                <select class="form-control" id="{{ _key }}" ng-switch-when="list" ng-options="value for value in keyType()" ng-model="kvp[_key]" ng-init="kvp[_key] = keyType()[0]"></select>
+                <textarea class="form-control" id="{{ _key }}" ng-model="kvp[_key]" ng-switch-when="textarea"></textarea>
+                <input type="{{ _keyType || 'text' }}" class="form-control" id="{{ _key }}" ng-model="kvp[_key]" typeahead="item.name for item in _keyComplete($viewValue)" typeahead-on-select="autocomplete(kvp, $item)" ng-switch-default>
+            </div>
+            <label for="{{ _value }}" class="col-sm-2 control-label">{{ _value | capitalize }}</label>
+            <div class="col-sm-6" ng-switch="_valueType">
+                <select class="form-control" id="{{ _value }}" ng-switch-when="list" ng-options="value for value in valueType()" ng-model="kvp[_value]" ng-init="kvp[_value] = valueType()[0]"></select>
+                <textarea class="form-control" id="{{ _value }}" ng-model="kvp[_value]" ng-switch-when="textarea"></textarea>
+                <input type="{{ _valueType || 'text' }}" class="form-control" id="{{ _value }}" ng-model="kvp[_value]" ng-switch-default>
+            </div>
+        </div>
+        <div class="add-line">
+            <button class="btn btn-link" ng-click="addItem()"><i class="fa fa-plus"></i> add new item</button>
+        </div>
+    </div>
+</div>

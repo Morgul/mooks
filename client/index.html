@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mooks">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Mooks & Minions</title>
+
+
+        <!-- Bootstrap -->
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <!--link href="http://bootswatch.com/cyborg/bootstrap.min.css" rel="stylesheet"-->
+
+        <!-- Font Awesome -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <!-- Custom Stylesheets -->
+        <link href="css/mook.css" rel="stylesheet"/>
+        <link href="css/custom.css" rel="stylesheet"/>
+        <link href="css/overrides.css" rel="stylesheet"/>
+
+        <!-- Unisocket -->
+        <script src="/unisocket/$/client.js"></script>
+
+        <!-- JQuery -->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+        <!-- Lodash -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+        <!-- Angular JS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+
+        <!-- Angular UI Bootstrap -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
+
+        <!-- Mooks -->
+        <script src="/js/app.js"></script>
+        <script src="/js/controllers/home.js"></script>
+        <script src="/js/controllers/search.js"></script>
+        <script src="/js/controllers/add.js"></script>
+        <script src="/js/controllers/request.js"></script>
+        <script src="/js/directives/kvp-list.js"></script>
+        <script src="/js/directives/mook.js"></script>
+
+        <!------------------------------------------------------------------------------------------------------------->
+        <!-- Compatibility & Shims                                                                                   -->
+        <!------------------------------------------------------------------------------------------------------------->
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!------------------------------------------------------------------------------------------------------------->
+    </head>
+    <body>
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="navCollapse = !navCollapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Mooks & Minions</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" collapse="navCollapse">
+                    <ul class="nav navbar-nav">
+                        <li ng-class="{ active: $route.current.templateUrl == '/partials/home.html' }"><a href="/">Home</a></li>
+                        <li ng-class="{ active: $route.current.templateUrl == '/partials/search.html' }"><a href="/search">Search</a></li>
+                        <li ng-class="{ active: $route.current.templateUrl == '/partials/request.html' }"><a href="/request">Request</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-class="{ active: $route.current.templateUrl == '/partials/add.html' }"><a href="/add"><i class="fa fa-plus"></i> Add Minion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main View -->
+        <div id="main-view" class="container" data-ng-view></div>
+    </body>
+</html>

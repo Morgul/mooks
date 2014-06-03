@@ -1,0 +1,26 @@
+{
+  "name": "mooks",
+  "version": "0.1.0",
+  "description": "A place to enter and look up mooks & minions.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "mooks",
+    "minions",
+    "rpg",
+    "git",
+    "angularjs"
+  ],
+  "author": "Christopher S. Case <chris.case@g33xnexus.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^0.9.0",
+    "connect": "^2.17.3",
+    "lodash": "^2.4.1",
+    "thinky": "^1.1.1",
+    "unisocket": "^0.9.0"
+  }
+}

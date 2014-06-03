@@ -1,0 +1,33 @@
+<h1>Request a Minion</h1>
+<p>
+    This is a page where a minion can be requested. If you would like to request someone add a minion, you can do that
+    with the following form. (Or, you could simply <a href="/add">add it</a> yourself!)
+</p>
+
+<h2>Requested</h2>
+<div class="well" style="height: 300px">
+    <ol>
+        <li ng-repeat="item in requested | filter:{locked: false} | orderBy:'name'">{{ item.name }} - <i>{{ item.book }}, pg {{ item.page }}</i></li>
+    </ol>
+</div>
+
+<h2>Add a request</h2>
+<div class="form-group">
+    <label for="name" class="col-sm-1 control-label">Name</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" id="name" placeholder="Stormtrooper" ng-model="req.name">
+    </div>
+    <label for="book" class="col-sm-1 control-label">Book</label>
+    <div class="col-sm-3">
+        <input type="text" class="form-control" id="book" placeholder="Core Rulebook" ng-model="req.book">
+    </div>
+    <label for="page" class="col-sm-1 control-label">Page</label>
+    <div class="col-sm-1">
+        <input type="number" class="form-control" id="page" placeholder="1" ng-model="req.page">
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-primary btn-block" ng-click="addRequest()"><i class="fa fa-plus"></i> Add</button>
+    </div>
+</div>
+
+

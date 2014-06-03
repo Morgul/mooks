@@ -1,0 +1,23 @@
+.mook {
+  max-width: 400px;
+  margin: 10px 0;
+}
+.mook header {
+  font-size: 20px;
+  background-color: #616161;
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: white;
+}
+.mook header .name {
+  display: block;
+  font-weight: bold;
+}
+.mook header .cl {
+  float: right;
+}
+.mook header .type {
+  font-size: 14px;
+  font-style: italic;
+  display: block;
+}
