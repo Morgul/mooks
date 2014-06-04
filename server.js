@@ -8,7 +8,9 @@ var fs = require('fs');
 var path = require('path');
 
 var connect = require('connect');
-var UniSocketServer = require('unisocket');
+//var UniSocketServer = require('unisocket');
+
+var io = require('socket.io');
 
 var package = require('./package');
 
@@ -30,7 +32,7 @@ var server = connect()
     })
     .listen(4000);
 
-var socketServer = new UniSocketServer().attach(server);
+var socketServer = io(server); //new UniSocketServer().attach(server);
 sockets.init(socketServer);
 
 console.log('Mooks v%s started on %s, port %s.', package.version, server.address().address, server.address().port);

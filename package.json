@@ -20,6 +20,7 @@
     "async": "^0.9.0",
     "connect": "^2.17.3",
     "lodash": "^2.4.1",
+    "socket.io": "^1.0.4",
     "thinky": "^1.1.1",
     "unisocket": "^0.9.0"
   }

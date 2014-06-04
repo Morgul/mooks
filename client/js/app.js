@@ -26,13 +26,13 @@ angular.module('mooks', [
         $rootScope.navCollapse = true;
 
         // Connect to unisocket
-        var socket = unisocket.connect(window.location.host);
-        socket.on('connected', function()
+       // var socket = unisocket.connect(window.location.host);
+        $rootScope.socket = io();
+        $rootScope.socket.on('connected', function()
         {
-            $rootScope.socket = socket;
+            console.log('connected.');
             $rootScope.$apply(function()
             {
-                console.log('connected.');
                 $rootScope.$broadcast('connected', socket);
             });
         });
