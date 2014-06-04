@@ -26,7 +26,7 @@ angular.module('mooks', [
         $rootScope.navCollapse = true;
 
         // Connect to unisocket
-        var socket = unisocket.connect("localhost:4000");
+        var socket = unisocket.connect(window.location.host);
         socket.on('connected', function()
         {
             $rootScope.socket = socket;
