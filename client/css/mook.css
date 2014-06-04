@@ -4,20 +4,70 @@
 }
 .mook header {
   font-size: 20px;
-  background-color: #616161;
+  background-color: #efefef;
   border-radius: 4px;
   padding: 2px 5px;
-  color: white;
+  border: 1px solid #ddd;
+  color: black;
 }
 .mook header .name {
   display: block;
   font-weight: bold;
 }
+.mook header .details,
 .mook header .cl {
   float: right;
 }
+.mook header .details,
 .mook header .type {
   font-size: 14px;
   font-style: italic;
   display: block;
+}
+.mook article {
+  padding: 0 10px;
+}
+.mook article .section {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 5px;
+}
+.mook article .section:last-child {
+  border-bottom: none;
+}
+.mook article .section header {
+  border: 1px solid #ccc;
+  border-radius: 0;
+  font-size: 14px;
+  text-align: center;
+  margin-top: -6px;
+  margin-left: -5px;
+  margin-right: -5px;
+  margin-bottom: 5px;
+}
+.mook article .section .sub {
+  vertical-align: top;
+  display: inline-block;
+  width: 32.5%;
+}
+.mook article .section .sub.half {
+  width: 49%;
+}
+.mook article .section .spacer {
+  margin: 7px 0;
+}
+.mook article .section .talent,
+.mook article .section .feat {
+  margin: 5px 0;
+}
+.mook article .section .talent .title,
+.mook article .section .feat .title {
+  background: #efefef;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 5px;
+  font-weight: bold;
+}
+.mook article .section .talent .content,
+.mook article .section .feat .content {
+  padding: 0 10px;
 }

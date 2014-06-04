@@ -8,7 +8,6 @@ function MookFactory()
 {
     function MookController($scope, $attrs)
     {
-        console.log('mook?', $scope.mook);
     } // end MookController
 
     return {

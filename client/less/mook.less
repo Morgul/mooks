@@ -4,24 +4,83 @@
 
     header {
         font-size: 20px;
-        background-color: #616161;
+        background-color: #efefef;
         border-radius: 4px;
         padding: 2px 5px;
-        color: white;
+        border: 1px solid #ddd;
+        color: black;
 
         .name {
             display: block;
             font-weight: bold;
         }
 
+        .details,
         .cl {
             float: right;
         }
 
+        .details,
         .type {
             font-size: 14px;
             font-style: italic;
             display: block;
+        }
+    }
+
+    article {
+        padding: 0 10px;
+
+        .section {
+            border-bottom: 1px solid #ccc;
+            padding: 5px 5px;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            header {
+                border: 1px solid #ccc;
+                border-radius: 0;
+                font-size: 14px;
+                text-align: center;
+
+                margin-top: -6px;
+                margin-left: -5px;
+                margin-right: -5px;
+                margin-bottom: 5px;
+            }
+
+            .sub {
+                vertical-align: top;
+                display: inline-block;
+                width: 32.5%;
+
+                &.half {
+                    width: 49%;
+                }
+            }
+
+            .spacer {
+                margin: 7px 0;
+            }
+
+            .talent,
+            .feat {
+                margin: 5px 0;
+
+                .title {
+                    background: #efefef;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    padding: 0 5px;
+                    font-weight: bold;
+                }
+
+                .content {
+                    padding: 0 10px;
+                }
+            }
         }
     }
 }

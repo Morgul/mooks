@@ -2,6 +2,87 @@
     <header>
         <span class="cl">CL {{ mook.cl }}</span>
         <span class="name">{{ mook.name }}</span>
+        <span class="details">Init: +{{ mook.initiative }}, DS: {{ mook.darkside }}</span>
         <span class="type">{{ mook.type }}</span>
     </header>
+    <article>
+        <div class="section">
+            <div class="sub half">Languages: <small>{{ mook.languages }}</small></div>
+            <div class="sub half">Senses: <small>{{ mook.senses }}</small></div>
+        </div>
+        <div class="section">
+            <header>Defenses</header>
+            <div class="sub text-center">
+                <b>Reflex</b>: {{ mook.ref }}
+            </div>
+            <div class="sub text-center">
+                <b>Fortitude</b>: {{ mook.fort }}
+            </div>
+            <div class="sub text-center">
+                <b>Will</b>: {{ mook.will }}
+            </div>
+            <div class="sub text-center">
+                <b>HP</b>: {{ mook.hp }}
+            </div>
+            <div class="sub text-center">
+                <b>Threshold</b>: {{ mook.threshold }}
+            </div>
+            <div class="sub text-center">
+                <b>Speed</b>: {{ mook.speed }}
+            </div>
+        </div>
+        <div class="section">
+            <header>Attacks</header>
+            <div ng-repeat="attack in mook.attacks"><b>{{ attack.type }}</b> {{ attack.text }}</div>
+            <div class="spacer"></div>
+            <div class="sub half"><b>Base Atk</b>: {{ mook.baseAttack }}</div>
+            <div class="sub half"><b>Grapple</b>: {{ mook.grapple }}</div>
+            <div class="spacer"></div>
+            <div><b>Attack Options</b>: {{ mook.attackOptions }}</div>
+            <div><b>Special Actions</b>: {{ mook.specialActions }}</div>
+        </div>
+        <div ng-if="mook.feats || mook.talents.length" class="section" ng-init="collapse = {}">
+            <header>Feats</header>
+            <div class="feat" ng-repeat="feat in mook.feats">
+                <div class="title" ng-click="collapse[feat.name] = !collapse[feat.name]">{{ feat.name }}</div>
+                <div class="content" collapse="!collapse[feat.name]">{{ feat.description }}</div>
+            </div>
+        </div>
+        <div ng-if="mook.talents || mook.talents.length" class="section">
+            <header>Talents</header>
+            <div class="talent" ng-repeat="talent in mook.talents">
+                <div class="title" ng-click="collapse[talent.name] = !collapse[talent.name]">{{ talent.name }}</div>
+                <div class="content" collapse="!collapse[talent.name]">{{ talent.description }}</div>
+            </div>
+        </div>
+        <div class="section">
+            <header>Stats</header>
+            <div class="sub">
+                <b>Strength</b>: {{ mook.abilities.strength }}
+            </div>
+            <div class="sub">
+                <b>Constitution</b>: {{ mook.abilities.constitution }}
+            </div>
+            <div class="sub">
+                <b>Dexterity</b>: {{ mook.abilities.dexterity }}
+            </div>
+            <div class="sub">
+                <b>Intelligence</b>: {{ mook.abilities.intelligence }}
+            </div>
+            <div class="sub">
+                <b>Wisdom</b>: {{ mook.abilities.wisdom }}
+            </div>
+            <div class="sub">
+                <b>Charisma</b>: {{ mook.abilities.charisma }}
+            </div>
+            <div class="spacer"></div>
+            <div><b>Skills</b>: <span ng-repeat="skill in mook.skills">{{ skill.name }} +{{ skill.value }}<span ng-if="!$last">, </span></span></div>
+            <!--
+            <div><b></b>: {{ mook. }}</div>
+            -->
+        </div>
+        <div class="section">
+            <div><b>Possessions</b>: {{ mook.possessions }}</div>
+        </div>
+    </article>
 </div>

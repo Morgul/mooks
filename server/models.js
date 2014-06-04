@@ -75,7 +75,8 @@ db.Mook = thinky.createModel('mook', {
     skills: [{
         name: String,
         value: Number
-    }]
+    }],
+    possessions: String
 }, { pk: 'name' });
 
 // Mook Relationships
