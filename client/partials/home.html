@@ -6,9 +6,5 @@
 
 <h2>Latest Additions:</h2>
 <ul>
-    <li>1/2/11 - <i>Some Mook</i></li>
-    <li>1/2/11 - <i>Some Mook</i></li>
-    <li>1/1/11 - <i>Some Mook</i></li>
-    <li>1/1/11 - <i>Some Mook</i></li>
-    <li>1/1/11 - <i>Some Mook</i></li>
+    <li ng-repeat="mook in recent">{{ mook.created | date:'short' }} - <i>{{ mook.name }}</i></li>
 </ul>
