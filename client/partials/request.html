@@ -5,7 +5,7 @@
 </p>
 
 <h2>Requested</h2>
-<div class="well" style="height: 300px">
+<div class="well" style="height: 300px; overflow-x: auto">
     <ol>
         <li ng-repeat="item in requested | filter:{locked: false} | orderBy:'name'">{{ item.name }} - <i>{{ item.book }}, pg {{ item.page }}</i></li>
     </ol>
