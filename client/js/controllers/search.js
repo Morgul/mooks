@@ -30,7 +30,6 @@ function SearchController($scope, $q)
     {
         $scope.socket.emit('get mook', $scope.mookName, function(error, mook)
         {
-            console.log('got mook:', mook);
             $scope.$apply(function()
             {
                 $scope.mook = mook;

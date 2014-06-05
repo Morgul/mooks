@@ -43,16 +43,16 @@
         </div>
         <div ng-if="mook.feats || mook.talents.length" class="section" ng-init="collapse = {}">
             <header>Feats</header>
-            <div class="feat" ng-repeat="feat in mook.feats">
+            <div class="feat" ng-repeat="feat in mook.feats | orderBy:'name'">
                 <div class="title" ng-click="collapse[feat.name] = !collapse[feat.name]">{{ feat.name }}</div>
-                <div class="content" collapse="!collapse[feat.name]">{{ feat.description }}</div>
+                <div class="content" collapse="!collapse[feat.name]" ng-bind-html="feat.description | markdown"></div>
             </div>
         </div>
         <div ng-if="mook.talents || mook.talents.length" class="section">
             <header>Talents</header>
-            <div class="talent" ng-repeat="talent in mook.talents">
+            <div class="talent" ng-repeat="talent in mook.talents | orderBy:'name'">
                 <div class="title" ng-click="collapse[talent.name] = !collapse[talent.name]">{{ talent.name }}</div>
-                <div class="content" collapse="!collapse[talent.name]">{{ talent.description }}</div>
+                <div class="content" collapse="!collapse[talent.name]" ng-bind-html="talent.description | markdown"></div>
             </div>
         </div>
         <div class="section">
