@@ -5,7 +5,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 var _ = require('lodash');
-var async = require('async');
 var db = require('./models');
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -26,7 +25,7 @@ function SocketHandler(socket) {
             return mook('created').during(twoWeeksAgo, new Date());
         }).run().then(function(mooks)
         {
-            callback(undefined, mooks);
+            callback(undefined, objectify(mooks));
         }).error(function(error)
         {
             console.error(error);
@@ -39,7 +38,7 @@ function SocketHandler(socket) {
     {
         db.Requested.filter({ locked: false }).run().then(function(requested)
         {
-            callback(undefined, requested);
+            callback(undefined, objectify(requested));
         }).error(function(error)
         {
             console.error(error);
@@ -92,7 +91,7 @@ function SocketHandler(socket) {
     {
         db.Mook.get(name).getJoin().run().then(function(mook)
         {
-            callback(undefined, mook);
+            callback(undefined, objectify(mook));
         }).error(function(error)
         {
             console.log('error:', error);
@@ -161,7 +160,7 @@ function SocketHandler(socket) {
                 callback(error.message || error.stack || error.toString());
             } // end if
 
-            callback(error, mook);
+            callback(error, objectify(mook));
         });
     });
 
@@ -173,7 +172,7 @@ function SocketHandler(socket) {
             return feat('name').match(name);
         }).run().then(function(results)
         {
-            callback(undefined, results);
+            callback(undefined, objectify(results));
         }).error(function(error)
         {
             console.error(error);
@@ -189,7 +188,7 @@ function SocketHandler(socket) {
             return talent('name').match(name);
         }).run().then(function(results)
         {
-            callback(undefined, results);
+            callback(undefined, objectify(results));
         }).error(function(error)
         {
             console.error(error);
@@ -205,7 +204,7 @@ function SocketHandler(socket) {
             return mook('name').match(name);
         }).run().then(function(results)
         {
-            callback(undefined, results);
+            callback(undefined, objectify(results));
         }).error(function(error)
         {
             console.error(error);
@@ -213,6 +212,13 @@ function SocketHandler(socket) {
         });
     });
 } // end socketHandler
+
+//----------------------------------------------------------------------------------------------------------------------
+
+function objectify(model)
+{
+    return JSON.parse(JSON.stringify(model));
+} // end objectify
 
 //----------------------------------------------------------------------------------------------------------------------
 
