@@ -1,3 +1,9 @@
+.logo {
+  float: left;
+  width: 32px;
+  margin-top: -9px;
+  margin-right: 5px;
+}
 .kvp-list {
   padding-left: 15px;
   padding-right: 15px;
