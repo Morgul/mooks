@@ -51,6 +51,7 @@ db.Mook = thinky.createModel('mook', {
     fort: Number,
     will: Number,
     hp: Number,
+    dr: Number,
     threshold: Number,
     speed: Number,
     abilities: {
