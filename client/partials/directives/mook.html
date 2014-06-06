@@ -30,6 +30,15 @@
             <div class="sub text-center">
                 <b>Speed</b>: {{ mook.speed }}
             </div>
+            <div class="sub text-center">
+                <b>DR</b>: {{ mook.dr || 0 }}
+            </div>
+            <div class="sub text-center">
+                <b>Destiny</b>: {{ mook.destiny || 0 }}
+            </div>
+            <div class="sub text-center">
+                <b>Force</b>: {{ mook.force || 0 }}
+            </div>
         </div>
         <div class="section">
             <header>Attacks</header>
@@ -48,7 +57,7 @@
                 <div class="content" collapse="!collapse[feat.name]" ng-bind-html="feat.description | markdown"></div>
             </div>
         </div>
-        <div ng-if="mook.talents || mook.talents.length" class="section">
+        <div ng-if="mook.talents || mook.talents.length" class="section" ng-init="collapse = {}">
             <header>Talents</header>
             <div class="talent" ng-repeat="talent in mook.talents | orderBy:'name'">
                 <div class="title" ng-click="collapse[talent.name] = !collapse[talent.name]">{{ talent.name }}</div>
