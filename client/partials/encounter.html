@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-sm-10">
+        <div class="input-group">
+            <input type="text" class="form-control" ng-model="mookName" typeahead="mook.name for mook in autoMook($viewValue)">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" ng-click="add()"><i class="fa fa-plus"></i> Add to Encounter</button>
+            </span>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-danger btn-block" ng-click="clearAll()">Clear All</button>
+    </div>
+</div>
+
+<hr/>
+
+<div class="dice-roller clearfix">
+    <div class="left-column">
+        <div class="btn-toolbar">
+            <button class="btn btn-default" ng-click="rollDice({ sides:4 })">d4</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 6 })">d6</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 8 })">d8</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 10 })">d10</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 12 })">d12</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 20 })">d20</button>
+            <button class="btn btn-default" ng-click="rollDice({ sides: 100 })">d100</button>
+        </div>
+        <div class="free-form">
+            <input type="number" min="1" class="form-control" ng-model="roll.outerMult">
+            <label class="control-label"> (</label>
+            <input type="number" min="0" class="form-control" ng-model="roll.mult">
+            <label class="control-label"> d</label>
+            <input type="number" min="0" class="form-control" ng-model="roll.sides">
+            <label class="control-label"> + </label>
+            <input type="number" min="0" class="form-control" ng-model="roll.bonus">
+            <label class="control-label">) + </label>
+            <input type="number" min="0" class="form-control" ng-model="roll.outerBonus">
+            <button class="btn btn-primary" ng-click="rollDice(roll)">Roll</button>
+        </div>
+    </div>
+    <div class="right-column">
+        <div class="history">
+            <div class="roll" ng-repeat="result in rollHistory">
+                <div class="title">{{ result.title }}:</div>
+                <div class="results">{{ result.text }} = <b>{{ result.total }}</b></div>
+            </div>
+        </div>
+        <br/>
+        <button class="btn btn-default btn-block" ng-click="rollHistory = []">Clear Results</button>
+    </div>
+</div>
+
+<hr/>
+
+<div class="mook-list text-center">
+    <div class="panel panel-default mook-panel" ng-repeat="mook in encounter.mooks">
+        <div class="panel-heading clearfix">
+            <button class="btn btn-xs btn-danger pull-right" ng-click="encounter.delete($index)"><i class="fa fa-trash-o"></i> Delete</button>
+            <h3 class="panel-title">{{ mook.name }}</h3>
+            <hr>
+            <div class="form-group">
+                <label for="hp" class="col-sm-1 control-label">HP</label>
+                <div class="col-sm-3">
+                    <input type="number" max="{{ mook.template.hp }}" class="form-control" id="hp" placeholder="0" ng-model="mook.hp">
+                </div>
+                <label for="cond" class="col-sm-2 control-label">Cond</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="cond" ng-options="cond for cond in encounter.conditions" ng-model="mook.condition"></select>
+                </div>
+            </div>
+            <textarea class="form-control" ng-model="mook.notes" rows="3"></textarea>
+        </div>
+        <div class="panel-body">
+            <mook model="mook.template"></mook>
+        </div>
+    </div>
+</div>
+

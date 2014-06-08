@@ -8,6 +8,7 @@ angular.module('mooks', [
         'ngRoute',
         'ui.bootstrap',
         'mooks.filters',
+        'mooks.services',
         'mooks.controllers',
         'mooks.directives'
     ])
@@ -17,6 +18,7 @@ angular.module('mooks', [
         $routeProvider
             .when('/', {templateUrl: '/partials/home.html',   controller: 'HomeController'})
             .when('/search', {templateUrl: '/partials/search.html',   controller: 'SearchController'})
+            .when('/encounter', {templateUrl: '/partials/encounter.html',   controller: 'EncounterController'})
             .when('/request', {templateUrl: '/partials/request.html',   controller: 'RequestController'})
             .when('/add', {templateUrl: '/partials/add.html',   controller: 'AddController'})
             .otherwise({redirectTo: '/'});
@@ -55,8 +57,10 @@ angular.module('mooks', [
 // Filters
 // ---------------------------------------------------------------------------------------------------------------------
 
+var filters = angular.module('mooks.filters', []);
+
 // Markdown filter (Note: Must be used with ng-bind!)
-angular.module('mooks.filters', []).filter('markdown', function($rootScope, $sce, $cacheFactory)
+filters.filter('markdown', function($rootScope, $sce, $cacheFactory)
 {
     function simpleHash(s)
     {
@@ -99,6 +103,21 @@ angular.module('mooks.filters', []).filter('markdown', function($rootScope, $sce
         } // end if
     }; // end markdown
 });
+
+// ---------------------------------------------------------------------------------------------------------------------
+// Services
+// ---------------------------------------------------------------------------------------------------------------------
+
+var services = angular.module('mooks.services', []);
+
+function DiceService(){}
+
+DiceService.prototype.roll = function(sides)
+{
+    return Math.floor(Math.random() * sides) + 1;
+};
+
+services.service('$dice', DiceService);
 
 // ---------------------------------------------------------------------------------------------------------------------
 // Module declarations
