@@ -4,6 +4,56 @@
   margin-top: -9px;
   margin-right: 5px;
 }
+.mook-panel {
+  vertical-align: top;
+  display: inline-block;
+  width: 430px;
+  margin-top: 5px;
+}
+.mook-panel + .mook-panel {
+  margin-left: 10px;
+}
+.mook-list {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+}
+.dice-roller .right-column,
+.dice-roller .left-column {
+  vertical-align: top;
+  display: inline-block;
+  min-width: 49%;
+}
+.dice-roller .history {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow-x: auto;
+  height: 150px;
+  padding: 6px;
+}
+.dice-roller .history .roll {
+  padding: 2px;
+  font-size: .95em;
+}
+.dice-roller .history .roll + .roll {
+  border-top: 1px solid #efefef;
+}
+.dice-roller .history .roll .title {
+  color: #aaa;
+}
+.dice-roller .history .roll .results {
+  margin-left: 10px;
+}
+.dice-roller .free-form {
+  display: inline-block;
+  margin-top: 10px;
+}
+.dice-roller .free-form input[type="number"] {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  padding: 4px;
+}
 .kvp-list {
   padding-left: 15px;
   padding-right: 15px;

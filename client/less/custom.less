@@ -7,6 +7,69 @@
     margin-right: 5px;
 }
 
+// Encounter page
+.mook-panel {
+    vertical-align: top;
+    display: inline-block;
+    width: 430px;
+    margin-top: 5px;
+}
+
+.mook-panel + .mook-panel {
+    margin-left: 10px;
+}
+
+.mook-list {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+}
+
+.dice-roller {
+    .right-column,
+    .left-column {
+        vertical-align: top;
+        display: inline-block;
+        min-width: 49%;
+    }
+
+    .history {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow-x: auto;
+        height: 150px;
+        padding: 6px;
+
+        .roll {
+            padding: 2px;
+            font-size: .95em;
+
+            & + .roll {
+                border-top: 1px solid #efefef;
+            }
+
+            .title {
+                color: #aaa;
+            }
+
+            .results {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    .free-form {
+        display: inline-block;
+        margin-top: 10px;
+        input[type="number"] {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            padding: 4px;
+        }
+    }
+}
+
 // KVP Directive
 .kvp-list {
     padding-left: 15px;
