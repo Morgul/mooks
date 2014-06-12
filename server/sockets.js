@@ -15,15 +15,7 @@ function SocketHandler(socket) {
     // Gets all mooks added in the last 2 weeks.
     this.socket.on('get recent', function(callback)
     {
-        db.Mook.filter(function(mook)
-        {
-            // Get a date that is two weeks ago from now
-            var twoWeeksAgo = new Date();
-            twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
-
-            // Return all mooks created in the last two weeks
-            return mook('created').during(twoWeeksAgo, new Date());
-        }).run().then(function(mooks)
+        db.Mook.orderBy('created').limit(30).run().then(function(mooks)
         {
             callback(undefined, objectify(mooks));
         }).error(function(error)
