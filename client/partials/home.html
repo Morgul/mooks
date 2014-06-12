@@ -6,5 +6,5 @@
 
 <h2>Latest Additions:</h2>
 <ul>
-    <li ng-repeat="mook in recent | orderBy: 'created'">{{ mook.created | date:'short' }} - <i>{{ mook.name }}</i></li>
+    <li ng-repeat="mook in recent | orderBy: '-created'">{{ mook.created | date:'short' }} - <i>{{ mook.name }}</i></li>
 </ul>
