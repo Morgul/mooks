@@ -188,6 +188,22 @@ function SocketHandler(socket) {
         });
     });
 
+    // Autocomplete Force Powers
+    this.socket.on('auto forcepowers', function(name, callback)
+    {
+        db.ForcePower.filter(function(power)
+        {
+            return power('name').match(name);
+        }).run().then(function(results)
+        {
+            callback(undefined, objectify(results));
+        }).error(function(error)
+        {
+            console.error(error);
+            callback(error.message || error.stack || error.toString());
+        });
+    });
+
     // Autocomplete Mooks
     this.socket.on('auto mook', function(name, callback)
     {

@@ -142,6 +142,26 @@ function AddController($scope, $timeout, $q) {
         return deferred.promise;
     };
 
+    $scope.autoForcePower = function(completion)
+    {
+        var deferred = $q.defer();
+
+        $scope.socket.emit('auto forcepower', completion, function(error, results)
+        {
+            if(error)
+            {
+                console.error('error:', error);
+                deferred.reject(error);
+            }
+            else
+            {
+                deferred.resolve(results);
+            } // end if
+        });
+
+        return deferred.promise;
+    };
+
     $scope.saveMook = function()
     {
         // Remove unneeded key
