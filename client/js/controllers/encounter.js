@@ -122,6 +122,7 @@ function EncounterController($scope, $q, $dice)
 {
     this.$scope = $scope;
     $scope.encounter = new Encounter($scope);
+    $scope.numToAdd = 1;
     $scope.rollHistory = [];
     $scope.roll = {
         outerMult: 1,
@@ -245,7 +246,10 @@ function EncounterController($scope, $q, $dice)
                 $scope.mookName = "";
                 $scope.$apply(function()
                 {
-                    $scope.encounter.add(mook);
+                    for(var idx = 0; idx < $scope.numToAdd; idx++)
+                    {
+                        $scope.encounter.add(mook);
+                    } // end for
                 });
             } // end if
         });

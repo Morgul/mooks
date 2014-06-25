@@ -4,6 +4,17 @@
   margin-top: -9px;
   margin-right: 5px;
 }
+.input-group-num {
+  display: table-cell;
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+  min-width: 50px;
+}
+.input-group-num input[type="number"] {
+  padding-right: 0 !important;
+  text-align: center;
+}
 .mook-panel {
   vertical-align: top;
   display: inline-block;
