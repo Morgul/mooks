@@ -15,39 +15,51 @@
 <hr/>
 
 <div class="dice-roller clearfix">
-    <div class="left-column">
-        <div class="btn-toolbar">
-            <button class="btn btn-default" ng-click="rollDice({ sides:4 })">d4</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 6 })">d6</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 8 })">d8</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 10 })">d10</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 12 })">d12</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 20 })">d20</button>
-            <button class="btn btn-default" ng-click="rollDice({ sides: 100 })">d100</button>
+    <div class="panel panel-default left-column">
+        <div class="panel-heading">
+            <h3 class="panel-title">Dice Roller</h3>
         </div>
-        <div class="free-form">
-            <input type="number" min="1" class="form-control" ng-model="roll.outerMult">
-            <label class="control-label"> (</label>
-            <input type="number" min="0" class="form-control" ng-model="roll.mult">
-            <label class="control-label"> d</label>
-            <input type="number" min="0" class="form-control" ng-model="roll.sides">
-            <label class="control-label"> + </label>
-            <input type="number" min="0" class="form-control" ng-model="roll.bonus">
-            <label class="control-label">) + </label>
-            <input type="number" min="0" class="form-control" ng-model="roll.outerBonus">
-            <button class="btn btn-primary" ng-click="rollDice(roll)">Roll</button>
-        </div>
-    </div>
-    <div class="right-column">
-        <div class="history">
-            <div class="roll" ng-repeat="result in rollHistory">
-                <div class="title">{{ result.title }}:</div>
-                <div class="results">{{ result.text }} = <b>{{ result.total }}</b></div>
+        <div class="panel-body">
+            <div class="btn-toolbar">
+                <button class="btn btn-default" ng-click="rollDice({ sides:4 })">d4</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 6 })">d6</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 8 })">d8</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 10 })">d10</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 12 })">d12</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 20 })">d20</button>
+                <button class="btn btn-default" ng-click="rollDice({ sides: 100 })">d100</button>
             </div>
+            <div class="free-form">
+                <input type="number" min="1" class="form-control" ng-model="roll.outerMult">
+                <label class="control-label"> (</label>
+                <input type="number" min="0" class="form-control" ng-model="roll.mult">
+                <label class="control-label"> d</label>
+                <input type="number" min="0" class="form-control" ng-model="roll.sides">
+                <label class="control-label"> + </label>
+                <input type="number" min="0" class="form-control" ng-model="roll.bonus">
+                <label class="control-label">) + </label>
+                <input type="number" min="0" class="form-control" ng-model="roll.outerBonus">
+                <button class="btn btn-primary" ng-click="rollDice(roll)">Roll</button>
+            </div>
+            <div class="history">
+                <div class="roll" ng-repeat="result in rollHistory">
+                    <div class="title">{{ result.title }}:</div>
+                    <div class="results">{{ result.text }} = <b>{{ result.total }}</b></div>
+                </div>
+            </div>
+            <br/>
+            <button class="btn btn-default btn-block" ng-click="rollHistory = []">Clear Results</button>
         </div>
-        <br/>
-        <button class="btn btn-default btn-block" ng-click="rollHistory = []">Clear Results</button>
     </div>
+    <div class="panel panel-default right-column">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+            <textarea class="form-control notes" ng-model="encounter.notes"></textarea>
+        </div>
+    </div>
+
 </div>
 
 <hr/>

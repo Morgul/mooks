@@ -24,6 +24,11 @@
   display: inline-block;
   min-width: 49%;
 }
+.dice-roller .notes {
+  min-height: 282px;
+  font-family: monospace;
+  font-size: 8pt;
+}
 .dice-roller .history {
   border: 1px solid #ccc;
   border-radius: 4px;

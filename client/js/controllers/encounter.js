@@ -54,6 +54,15 @@ function Encounter($scope)
     }, true);
 } // end Encounter
 
+Encounter.prototype = {
+    get notes() {
+        return this.store.get('notes', "");
+    },
+    set notes(val) {
+        this.store.set('notes', val);
+    }
+};
+
 Encounter.prototype._load = function()
 {
     this.mooks = this.store.get('encounter', []);
