@@ -59,10 +59,24 @@ Encounter.prototype._load = function()
     this.mooks = this.store.get('encounter', []);
 }; // end _load
 
+Encounter.prototype.getName = function(mookName)
+{
+    var counts = _.countBy(this.mooks, 'name');
+
+    if((counts[mookName] || 0) < 1)
+    {
+        return mookName;
+    }
+    else
+    {
+        return mookName + " " + (counts[mookName] + 1);
+    } // end if
+};
+
 Encounter.prototype.add = function(mook)
 {
     var mookInstance = {
-        name: mook.name + (this.mooks.length > 0 ? " " + this.mooks.length : ""),
+        name: this.getName(mook.name),
         hp: mook.hp,
         condition: "Normal",
         notes: "",
@@ -186,8 +200,6 @@ function EncounterController($scope, $q, $dice)
             // Build result
             //------------------------------------------------
 
-            console.log('results:', results);
-
             function buildSubRoll(subRoll, bonus) {
                 return "( " + subRoll.join(', ') + " )" + (bonus ? " + " + bonus : "");
             }
@@ -225,7 +237,6 @@ function EncounterController($scope, $q, $dice)
                 $scope.$apply(function()
                 {
                     $scope.encounter.add(mook);
-                    console.log('encounter:', $scope.encounter);
                 });
             } // end if
         });
