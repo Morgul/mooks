@@ -70,7 +70,10 @@ Encounter.prototype._load = function()
 
 Encounter.prototype.getName = function(mookName)
 {
-    var counts = _.countBy(this.mooks, 'name');
+    var counts = _.countBy(this.mooks, function(mook)
+    {
+        return mook.name.replace(/\s\d+$/, "");
+    });
 
     if((counts[mookName] || 0) < 1)
     {
@@ -258,6 +261,7 @@ function EncounterController($scope, $q, $dice)
     $scope.clearAll = function()
     {
         this.encounter.clearAll();
+        $scope.numToAdd = 1;
     }; // end clearAll
 } // end EncounterController
 
