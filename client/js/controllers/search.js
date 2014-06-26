@@ -6,6 +6,19 @@
 
 function SearchController($scope, $q)
 {
+    $scope.socket.emit('get all mooks', function(error, mooks)
+    {
+        $scope.$apply(function()
+        {
+            $scope.mooks = mooks;
+        });
+    });
+
+    $scope.selectMook = function(mook)
+    {
+        $scope.mook = mook;
+    };
+
     $scope.autoMook = function(completion)
     {
         var deferred = $q.defer();

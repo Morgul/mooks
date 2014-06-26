@@ -1,12 +1,22 @@
 <div class="row">
-    <div class="col-lg-6">
+    <div class="col-sm-4 hidden-xs">
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-class="{ active: listMook.name == mook.name }"
+               ng-repeat="listMook in mooks | orderBy: ['cl', 'name']" ng-click="selectMook(listMook)">
+                <span class="badge">CL {{ listMook.cl }}</span>
+                <h4 class="list-group-item-heading">{{ listMook.name }}</h4>
+                <p class="list-group-item-text text-muted"><i>{{ listMook.type }}</i></p>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-8">
         <div class="input-group">
             <input type="text" class="form-control" ng-model="mookName" typeahead="mook.name for mook in autoMook($viewValue)">
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="button" ng-click="search()"><i class="fa fa-search"></i> Search</button>
             </span>
         </div>
+
+        <mook ng-if="mook.name" model="mook"></mook>
     </div>
 </div>
-
-<mook ng-if="mook.name" model="mook"></mook>

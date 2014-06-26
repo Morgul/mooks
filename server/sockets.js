@@ -91,6 +91,19 @@ function SocketHandler(socket) {
         });
     });
 
+    // Gets all mooks
+    this.socket.on('get all mooks', function(callback)
+    {
+        db.Mook.getJoin().run().then(function(mooks)
+        {
+            callback(undefined, objectify(mooks));
+        }).error(function(error)
+        {
+            console.log('error:', error);
+            callback(undefined, null);
+        });
+    });
+
     // Saves a mook to the db
     this.socket.on('save mook', function(mook, callback)
     {
