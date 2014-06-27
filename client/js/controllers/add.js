@@ -146,7 +146,27 @@ function AddController($scope, $timeout, $q) {
     {
         var deferred = $q.defer();
 
-        $scope.socket.emit('auto forcepower', completion, function(error, results)
+        $scope.socket.emit('auto force powers', completion, function(error, results)
+        {
+            if(error)
+            {
+                console.error('error:', error);
+                deferred.reject(error);
+            }
+            else
+            {
+                deferred.resolve(results);
+            } // end if
+        });
+
+        return deferred.promise;
+    };
+
+    $scope.autoForceTechnique = function(completion)
+    {
+        var deferred = $q.defer();
+
+        $scope.socket.emit('auto force techniques', completion, function(error, results)
         {
             if(error)
             {

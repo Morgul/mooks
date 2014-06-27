@@ -33,8 +33,14 @@ db.Talent = thinky.createModel('talent', {
     description: String
 }, { pk: 'name'});
 
-// Represents a talent
+// Represents a force power
 db.ForcePower = thinky.createModel('force_power', {
+    name: String,
+    description: String
+}, { pk: 'name'});
+
+// Represents a force technique
+db.ForceTechnique = thinky.createModel('force_technique', {
     name: String,
     description: String
 }, { pk: 'name'});
@@ -90,6 +96,7 @@ db.Mook = thinky.createModel('mook', {
 db.Mook.hasAndBelongsToMany(db.Feat, 'feats', 'name', 'name');
 db.Mook.hasAndBelongsToMany(db.Talent, 'talents', 'name', 'name');
 db.Mook.hasAndBelongsToMany(db.ForcePower, 'forcePowers', 'name', 'name');
+db.Mook.hasAndBelongsToMany(db.ForceTechnique, 'forceTechniques', 'name', 'name');
 
 //----------------------------------------------------------------------------------------------------------------------
 
