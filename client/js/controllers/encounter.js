@@ -124,6 +124,7 @@ Encounter.prototype.clearAll = function()
 function EncounterController($scope, $q, $dice)
 {
     this.$scope = $scope;
+    $scope.expand = {};
     $scope.encounter = new Encounter($scope);
     $scope.numToAdd = 1;
     $scope.rollHistory = [];
@@ -263,6 +264,16 @@ function EncounterController($scope, $q, $dice)
         this.encounter.clearAll();
         $scope.numToAdd = 1;
     }; // end clearAll
+
+    $scope.editName = function(index)
+    {
+        $scope.expand[index] = true;
+    }; // edit Name
+
+    $scope.saveName = function(index)
+    {
+        $scope.expand[index] = false;
+    }; // end saveName
 } // end EncounterController
 
 // ---------------------------------------------------------------------------------------------------------------------

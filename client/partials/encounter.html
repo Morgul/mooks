@@ -70,8 +70,19 @@
 <div class="mook-list text-center">
     <div class="panel panel-default mook-panel" ng-repeat="mook in encounter.mooks">
         <div class="panel-heading clearfix">
-            <button class="btn btn-xs btn-danger pull-right" ng-click="encounter.delete($index)"><i class="fa fa-trash-o"></i> Delete</button>
+            <div class="btn-group pull-right">
+                <button class="btn btn-xs btn-default" ng-click="editName($index)"><i class="fa fa-edit"></i> Edit</button>
+                <button class="btn btn-xs btn-danger" ng-click="encounter.delete($index)"><i class="fa fa-trash-o"></i> Delete</button>
+            </div>
             <h3 class="panel-title">{{ mook.name }}</h3>
+            <div style="margin-top: 10px;" collapse="!(expand['' + $index])">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="mook.name">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="saveName($index)"><i class="fa fa-sign-out"></i> Close</button>
+                    </span>
+                </div>
+            </div>
             <hr>
             <div class="form-group">
                 <label for="hp" class="col-sm-1 control-label">HP</label>
