@@ -110,11 +110,15 @@ function SocketHandler(socket) {
         // Remove any invalid objects
         mook.feats = _.reject(mook.feats, function(i){ return !i.name; });
         mook.talents = _.reject(mook.talents, function(i){ return !i.name; });
+        mook.forcePowers = _.reject(mook.forcePowers, function(i){ return !i.name; });
+        mook.forceTechniques = _.reject(mook.forceTechniques, function(i){ return !i.name; });
         mook.attacks = _.reject(mook.attacks, function(i){ return !i.text; });
         mook.skills = _.reject(mook.skills, function(i){ return !i.name; });
 
         var feats = [];
         var talents = [];
+        var forcePowers = [];
+        var forceTechniques = [];
 
         // Build new model instances for every feat, and if it is an existing feat, we set it's saved status
         // to `true`. This prevents primary key errors when calling `saveAll()`.
@@ -148,14 +152,52 @@ function SocketHandler(socket) {
             talents.push(talent);
         });
 
+        // Build new model instances for every forcePower, and if it is an existing forcePower, we set it's saved status
+        // to `true`. This prevents primary key errors when calling `saveAll()`.
+        mook.forcePowers.forEach(function(forcePowerDef)
+        {
+            var forcePower = new db.ForcePower(forcePowerDef);
+
+            if(forcePowerDef.exists)
+            {
+                delete forcePowerDef.exists;
+                forcePower = new db.ForcePower(forcePowerDef);
+                forcePower.setSaved(true);
+            } // end if
+
+            forcePowers.push(forcePower);
+        });
+
+        // Build new model instances for every forceTechnique, and if it is an existing forceTechnique, we set it's saved status
+        // to `true`. This prevents primary key errors when calling `saveAll()`.
+        mook.forceTechniques.forEach(function(forceTechniqueDef)
+        {
+            var forceTechnique = new db.Talent(forceTechniqueDef);
+
+            if(forceTechniqueDef.exists)
+            {
+                delete forceTechniqueDef.exists;
+                forceTechnique = new db.Talent(forceTechniqueDef);
+                forceTechnique.setSaved(true);
+            } // end if
+
+            forceTechniques.push(forceTechnique);
+        });
+
         // Due to a bug in thinky, if these are not _deleted_, the relations will not build correctly.
         delete mook.feats;
         delete mook.talents;
+        delete mook.forcePowers;
+        delete mook.forceTechniques;
 
         // Build the mook
         mook = new db.Mook(mook);
         mook.feats = feats;
         mook.talents = talents;
+        mook.forcePowers = forcePowers;
+        mook.forceTechniques = forceTechniques;
+
+        console.log(mook);
 
         mook.saveAll(function(error)
         {

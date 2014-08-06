@@ -64,6 +64,20 @@
                 <div class="content" collapse="!collapse[talent.name]" ng-bind-html="talent.description | markdown"></div>
             </div>
         </div>
+        <div ng-if="mook.forcePowers || mook.forcePowers.length" class="section" ng-init="collapse = {}">
+            <header>Force Powers</header>
+            <div class="talent" ng-repeat="forcePower in mook.forcePowers | orderBy:'name'">
+                <div class="title" ng-click="collapse[forcePower.name] = !collapse[forcePower.name]">{{ forcePower.name }}</div>
+                <div class="content" collapse="!collapse[forcePower.name]" ng-bind-html="forcePower.description | markdown"></div>
+            </div>
+        </div>
+        <div ng-if="mook.forceTechniques || mook.forceTechniques.length" class="section" ng-init="collapse = {}">
+            <header>Force Techniques</header>
+            <div class="talent" ng-repeat="forceTechnique in mook.forceTechniques | orderBy:'name'">
+                <div class="title" ng-click="collapse[forceTechnique.name] = !collapse[forceTechnique.name]">{{ forceTechnique.name }}</div>
+                <div class="content" collapse="!collapse[forceTechnique.name]" ng-bind-html="forceTechnique.description | markdown"></div>
+            </div>
+        </div>
         <div class="section">
             <header>Stats</header>
             <div class="sub">
